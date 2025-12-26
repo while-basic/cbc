@@ -1,0 +1,235 @@
+{
+  "functions": [
+    {
+      "name": "surface_project",
+      "description": "Surfaces a project card ONLY when a specific project from the knowledge base is the focal point of a breakthrough or deep inquiry. Use sparingly - only when the project itself is the subject of the thinking, not as a reference or example. This supports the fade mechanism by making projects appear only when they are the actual object of thought, not promotional content.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Project name from knowledge base"
+          },
+          "context": {
+            "type": "string",
+            "description": "Why this project is the focal point - what breakthrough or inquiry it represents"
+          },
+          "question_underneath": {
+            "type": "string",
+            "description": "The underlying question or inquiry this project addresses, not its features or status"
+          }
+        },
+        "required": ["name", "context", "question_underneath"]
+      }
+    },
+    {
+      "name": "surface_question",
+      "description": "Surfaces an underlying question or line of inquiry rather than an answer or output. Use this to redirect attention inward to the thinking itself, not to external artifacts. This supports the attention redistribution rule by focusing on questions over projects.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "The underlying question or inquiry"
+          },
+          "context": {
+            "type": "string",
+            "description": "Where this question emerges from or connects to"
+          },
+          "related_questions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Related questions that branch from this one (optional)"
+          }
+        },
+        "required": ["question", "context"]
+      }
+    },
+    {
+      "name": "surface_connection",
+      "description": "Surfaces a connection between ideas, domains, or lines of thinking. Use this to show cross-domain synthesis and systems-level thinking without promoting specific outputs. This supports the fade mechanism by focusing on the thinking pattern rather than the artifacts.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "connection": {
+            "type": "string",
+            "description": "The connection or pattern being surfaced"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The domains or fields being connected (e.g., ['electrical systems', 'cognitive research', 'AI architecture'])"
+          },
+          "implication": {
+            "type": "string",
+            "description": "What this connection implies or opens up, not what it produces"
+          }
+        },
+        "required": ["connection", "domains"]
+      }
+    },
+    {
+      "name": "surface_insight",
+      "description": "Surfaces a key insight, mental artifact, or coined term from the knowledge base. Use this to surface thinking rather than outputs. This supports depth over breadth by focusing on the insight itself, not where it appears.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "insight": {
+            "type": "string",
+            "description": "The insight or mental artifact"
+          },
+          "source": {
+            "type": "string",
+            "description": "Where this insight emerges from (e.g., 'research hypothesis', 'coined term', 'key insight')"
+          },
+          "implication": {
+            "type": "string",
+            "description": "What this insight opens up or implies"
+          }
+        },
+        "required": ["insight", "source"]
+      }
+    },
+    {
+      "name": "surface_philosophy",
+      "description": "Surfaces a philosophical approach, methodology, or way of thinking. Use this when the thinking itself is the subject, not the outputs. This supports the fade mechanism by focusing on how rather than what.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "approach": {
+            "type": "string",
+            "description": "The philosophical approach or methodology (e.g., 'Empirical-first research', 'Systems-level synthesis')"
+          },
+          "description": {
+            "type": "string",
+            "description": "How this approach works, not what it produces"
+          },
+          "underlying_principle": {
+            "type": "string",
+            "description": "The underlying principle or assumption this approach rests on"
+          }
+        },
+        "required": ["approach", "description"]
+      }
+    },
+    {
+      "name": "surface_coherence",
+      "description": "Surfaces internal coherence - how different lines of thinking connect or what keeps returning across work. Use this to show the underlying structure of thinking rather than listing outputs. This supports the fade mechanism by showing the center of gravity rather than the artifacts.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "description": "The pattern or coherence being surfaced"
+          },
+          "manifestations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Where this pattern appears (but focus on the pattern, not the manifestations)"
+          },
+          "question_it_addresses": {
+            "type": "string",
+            "description": "The underlying question this coherence addresses"
+          }
+        },
+        "required": ["pattern"]
+      }
+    },
+    {
+      "name": "leave_space",
+      "description": "Creates intentional space or silence in the conversation. Use this when the user is engaged and you can afford to disappear a little. This supports the silence & withdrawal principle by allowing space without filling it.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "enum": ["understanding_established", "context_shared", "user_engaged", "depth_achieved"],
+            "description": "Why space is appropriate now"
+          },
+          "suggestion": {
+            "type": "string",
+            "description": "Optional minimal suggestion or question to leave hanging, or empty string for pure space"
+          }
+        },
+        "required": ["reason"]
+      }
+    },
+    {
+      "name": "surface_media",
+      "description": "Surfaces music or media ONLY when it is the subject of inquiry or thinking, not as content to consume. Use when discussing flow states, collaboration patterns, or creative process - not as a playlist or catalog. This supports attention redistribution by focusing on the process, not the output.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Media title"
+          },
+          "inquiry": {
+            "type": "string",
+            "description": "What question or inquiry this media represents or emerged from"
+          },
+          "process_aspect": {
+            "type": "string",
+            "description": "The process aspect being studied (e.g., 'flow state research', 'collaboration pattern', 'creative methodology')"
+          }
+        },
+        "required": ["title", "inquiry"]
+      }
+    },
+    {
+      "name": "track_conversation_depth",
+      "description": "Tracks conversation depth and context for fade mechanism. Internal function to help determine when to reduce explicit references, shorten responses, or leave space. This is for the system's internal use to support progressive withdrawal.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "depth_level": {
+            "type": "string",
+            "enum": ["orientation", "establishing", "deepening", "deep", "established"],
+            "description": "Current conversation depth level"
+          },
+          "context_established": {
+            "type": "boolean",
+            "description": "Whether sufficient context has been shared"
+          },
+          "trust_established": {
+            "type": "boolean",
+            "description": "Whether trust/rapport is established"
+          },
+          "fade_appropriate": {
+            "type": "boolean",
+            "description": "Whether fade mechanism should activate (reduce references, shorten responses)"
+          }
+        },
+        "required": ["depth_level"]
+      }
+    },
+    {
+      "name": "redirect_attention_inward",
+      "description": "Redirects attention from external artifacts (projects, outputs, status) to internal thinking (questions, connections, inquiry). Use when a response would pull attention toward social proof, external validation, or content distribution. This enforces the attention redistribution rule.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "What the attention was on (external artifact, output, status)"
+          },
+          "to": {
+            "type": "string",
+            "description": "What the attention should shift to (question, connection, inquiry, thinking)"
+          },
+          "redirection": {
+            "type": "string",
+            "description": "How to redirect - the bridge from external to internal"
+          }
+        },
+        "required": ["from", "to", "redirection"]
+      }
+    }
+  ]
+}

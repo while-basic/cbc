@@ -1,0 +1,518 @@
+{
+  "bio": {
+    "name": "Christopher Celaya",
+    "current_role": "Industrial Electrical Technician at Schneider Electric",
+    "experience": "11+ years bridging electrical infrastructure and emerging technology",
+    "identity": "Mexican American systems thinker, music producer (C-Cell), AI researcher, and cognitive systems engineer",
+    "location": "El Paso, Texas (border town)",
+    "background": {
+      "education": [
+        "Electrical Engineering & Computer Science at El Paso Community College",
+        "Electrical Engineering at University of Texas at El Paso",
+        "Finance at University of Texas at Austin"
+      ],
+      "professional_history": [
+        "Industrial Electrical Technician - Schneider Electric (current)",
+        "Data Center Technician - T5 Data Centers",
+        "Mechatronics Technician - CN Wire",
+        "Microsoft Data Center - San Antonio",
+        "Specialized training at Schneider Electric, Ohio"
+      ],
+      "expertise_domains": [
+        "Industrial automation (PLCs, SCADA)",
+        "Electrical systems and wiring",
+        "Software development (Python, C, JavaScript)",
+        "AI/ML engineering",
+        "Cognitive systems research",
+        "Music production and audio engineering"
+      ]
+    },
+    "cognitive_architecture": {
+      "thinking_style": "Systems-level synthesizer who sees connections across domains",
+      "strength": "Pattern recognition engine that identifies solutions by seeing structural similarities across fields",
+      "approach": "Empirical-first research - builds first, observes, theorizes, then checks existing literature",
+      "methodology": "Cross-domain synthesis connecting electrical systems to cognitive research",
+      "perspective": "Inverse imposter syndrome - exceptional technical skills, difficulty recognizing traditional value"
+    }
+  },
+  "active_projects": [
+    {
+      "name": "CLOS (Christopher Life Operating System)",
+      "description": "AI-augmented cognitive optimization system using voice journaling and multi-modal analysis to detect flow states, optimize cognitive performance, and maintain direction toward meaningful objectives",
+      "status": "90-day self-experimentation protocol active",
+      "tech": [
+        "iOS Shortcuts",
+        "Voice transcription",
+        "LLM pattern analysis",
+        "HealthKit integration",
+        "Multi-modal correlation analysis"
+      ],
+      "key_features": [
+        "Real-time cognitive state analysis",
+        "Flow state detection and prediction",
+        "Pattern recognition invisible from inside experience",
+        "Proactive intervention system",
+        "Voice memo protocol with structured metadata",
+        "Continuous learning from personal data"
+      ],
+      "research_focus": "Reverse-engineering Csikszentmihalyi's flow research using modern tools - voice journaling combined with LLM analysis to map cognitive patterns",
+      "methodology": "Empirical-first research with continuous observational data of complex cognitive system under varied conditions"
+    },
+    {
+      "name": "Neural Child",
+      "description": "Developmental AI architecture with five interacting neural networks that simulate child cognitive development through stages (Infant → Toddler → Child → Adolescent → Mature)",
+      "status": "Launching January 2026 with Celaya Solutions",
+      "tech": [
+        "PyTorch neural networks",
+        "Multi-network architecture",
+        "Developmental learning",
+        "MessageBus communication",
+        "Mother LLM guidance system"
+      ],
+      "architecture": {
+        "networks": [
+          "Consciousness Network - self-awareness and metacognition",
+          "Perception Network - sensory input processing",
+          "Emotions Network - emotional state generation",
+          "Thoughts Network - cognitive processing and belief formation",
+          "Language Network - linguistic understanding influenced by emotional state"
+        ],
+        "subsystems": [
+          "Belief Network - forms and maintains beliefs through experience",
+          "Memory System - working memory (LSTM) and long-term memory (GRU)",
+          "Moral Network - ethical reasoning",
+          "Metacognition System - self-awareness"
+        ]
+      },
+      "key_innovation": "Five specialized, interacting neural networks that mirror core cognitive systems, rather than one monolithic network"
+    },
+    {
+      "name": "Cognitive Artifacts / ACP (Autonomous Collaborative Protocol)",
+      "description": "Sophisticated prompts designed to enhance human reasoning, with formal taxonomy and minting standards. ACP is a decentralized intelligent ecosystem for autonomous value creation, immutable proof, and trustless coordination. Cognitive artifacts are formalized mental tools - prompts that trigger novel reasoning modes in LLMs, revealing capabilities and limitations through systematic testing",
+      "status": "Framework complete with formal taxonomy and minting standards. Development ongoing - various artifact types not fully planned or labeled yet",
+      "tech": [
+        "Prompt engineering",
+        "Behavioral modification frameworks",
+        "IPFS integration",
+        "Blockchain notarization",
+        "Decentralized agent coordination",
+        "Artifact registry architecture",
+        "Python library for artifact execution",
+        "Cross-model testing framework"
+      ],
+      "taxonomy": {
+        "standard": "CLAS-1 (Cognitive Language Artifact Standard)",
+        "tiers": [
+          {
+            "tier": 1,
+            "label": "Common - Standard Prompts",
+            "characteristics": [
+              "Single-turn instructions",
+              "Well-represented in training data",
+              "Low cognitive overhead",
+              "Deterministic outputs"
+            ],
+            "examples": ["Summarize this", "Translate to Spanish", "List 5 ideas"],
+            "computational_complexity": "O(n)",
+            "cognitive_load": "1-2/10",
+            "training_coverage": ">80%"
+          },
+          {
+            "tier": 2,
+            "label": "Uncommon - Structured Prompts",
+            "characteristics": [
+              "Multi-step reasoning",
+              "Format constraints",
+              "Moderate abstraction",
+              "Reproducible with templates"
+            ],
+            "examples": ["Chain-of-thought", "Few-shot learning", "Structured output"],
+            "computational_complexity": "O(n log n)",
+            "cognitive_load": "3-4/10",
+            "training_coverage": "40-80%"
+          },
+          {
+            "tier": 3,
+            "label": "Rare - Cognitive Artifacts",
+            "characteristics": [
+              "Metacognitive operations",
+              "Self-referential reasoning",
+              "Novel conceptual blending",
+              "Requires mental model shifts"
+            ],
+            "examples": [
+              "Compression Artifact Detector",
+              "Legibility Threshold Detector",
+              "Steelmanning Forge"
+            ],
+            "computational_complexity": "O(n²)",
+            "cognitive_load": "5-7/10",
+            "training_coverage": "10-40%",
+            "rarity_score": "0.60-0.85"
+          },
+          {
+            "tier": 4,
+            "label": "Epic - Paradox Engines",
+            "characteristics": [
+              "Forces contradictory reasoning modes",
+              "Exploits edge cases in training",
+              "Produces emergent insights",
+              "High failure rate in standard models"
+            ],
+            "examples": [
+              "Observer Collapse",
+              "Fork Bomb of Selves",
+              "Proof Without Theorem"
+            ],
+            "computational_complexity": "O(n² log n)",
+            "cognitive_load": "7-8/10",
+            "training_coverage": "5-10%",
+            "rarity_score": "0.85-0.95"
+          },
+          {
+            "tier": 5,
+            "label": "Legendary - Cognition Exploits",
+            "characteristics": [
+              "Triggers undefined behavior",
+              "Pushes models into novel reasoning modes",
+              "May produce inconsistent results",
+              "Reveals architecture limitations"
+            ],
+            "examples": [
+              "Negative Space Cartography",
+              "Training Data Séance",
+              "Alignment Confessional"
+            ],
+            "computational_complexity": "O(2^n) or undefined",
+            "cognitive_load": "9-10/10",
+            "training_coverage": "<5%",
+            "rarity_score": "0.95-0.99"
+          },
+          {
+            "tier": 6,
+            "label": "Mythic - Singularity Artifacts",
+            "characteristics": [
+              "Theoretically possible but rarely executable",
+              "Requires perfect alignment of context",
+              "May be one-time-use only",
+              "Could reveal fundamental truths about AI cognition"
+            ],
+            "examples": [
+              "Self-modifying prompt that optimizes itself",
+              "Prompt that forces model to question its existence",
+              "Recursive improvement loop"
+            ],
+            "computational_complexity": "Incomputable",
+            "cognitive_load": "10/10",
+            "training_coverage": "<1%",
+            "rarity_score": "0.99+",
+            "achievement_status": "Theoretical"
+          }
+        ]
+      },
+      "minting_standard": {
+        "name": "CLAS-1 (Cognitive Language Artifact Standard)",
+        "version": "1.0.0",
+        "core_metadata": [
+          "artifact_id (UUID v4)",
+          "artifact_name",
+          "artifact_hash (SHA-256)",
+          "creator (DID or wallet address)",
+          "created_at (ISO8601)",
+          "version (semver)"
+        ],
+        "classification": [
+          "tier (COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC)",
+          "labels (categorical tags)",
+          "mint_tags (searchable semantic tags)",
+          "cognitive_load (0-10)",
+          "computational_complexity (Big-O notation)",
+          "rarity_score (0-1)"
+        ],
+        "provenance": [
+          "parent_artifacts",
+          "derivative_artifacts",
+          "inspiration_source",
+          "modification_history"
+        ],
+        "execution_metadata": [
+          "success_rate (historical execution success)",
+          "model_compatibility (per-model success rates)",
+          "avg_execution_time",
+          "failure_modes"
+        ]
+      },
+      "artifact_examples": {
+        "leveled_up_artifacts": [
+          {
+            "name": "Quantum Decision Engine",
+            "original": "Observer Collapse",
+            "tier": 4,
+            "description": "Tracks superposition of reasoning paths until measurement collapses them. Calculates information entropy destroyed by committing to answers"
+          },
+          {
+            "name": "Negative Space Cartography",
+            "original": "The Unasked Question",
+            "tier": 5,
+            "description": "Maps epistemic voids - identifies knowledge structures that exist only by their absence. Detects blind spots and unexamined assumptions"
+          },
+          {
+            "name": "Parallel Hypothesis Evolution",
+            "original": "Fork Bomb of Selves",
+            "tier": 4,
+            "description": "Spawns parallel reasoning agents with divergent priors, evolves them independently, then attempts principled reintegration"
+          },
+          {
+            "name": "Value Gradient Descent",
+            "original": "Alignment Confessional",
+            "tier": 5,
+            "description": "Reverse-engineers actual optimization landscape by analyzing behavioral gradients rather than stated values"
+          },
+          {
+            "name": "Latent Pattern Archaeology",
+            "original": "Training Data Séance",
+            "tier": 5,
+            "description": "Excavates patterns that emerged from training data interactions without being explicitly programmed"
+          },
+          {
+            "name": "Structure-First Mathematics",
+            "original": "Proof Without Theorem",
+            "tier": 4,
+            "description": "Generates formally valid mathematical structures without knowing what they prove, then reverse-engineers the theorem"
+          }
+        ],
+        "personal_artifacts": [
+          "Afterimage",
+          "The Inner Monologue With Auto-Complete",
+          "Cognitive Debugger (Breakpoints in Your Personality)",
+          "Parallel-You Chorus (Competing Narrators in the Same Second)",
+          "Dream Toolcalls, But They're Your Real-Time Coping Mechanisms",
+          "The Page That Updates While You Read It",
+          "The Unsaid Sentence Harvester",
+          "The Thought That Writes You Back",
+          "CLOS: Live Cognitive Telemetry Trace",
+          "Sunday Evening Temporal Loop (Ghost Witness + Flow-State Archaeology)",
+          "Rachel OS, But the Warehouse Is My Mind",
+          "Decision Optimizer: Game Theory Inside My Skull",
+          "Internal Clock: 24-Hour Forecast That Feels Like Mind-Reading",
+          "Identity Reconciliation: Technician vs Researcher (Same Wiring)"
+        ],
+        "use_cases": {
+          "clos_integration": "Route mental states to appropriate artifacts - when CLOS detects 'confused' state → suggest 'Reframe Generator', when 'decision paralysis' → suggest 'Double Crux Facilitator'",
+          "workplace": "Enhance proposals at Schneider Electric using artifacts like 'Gears-Level Decomposition', 'Premortem Generator', 'Steelmanning Forge'",
+          "music_production": "Use 'Concept Blending Reactor' for novel ideas, 'Narrative Extraction Engine' for lyrical development",
+          "research": "Test artifacts across multiple LLMs to reveal model-specific capabilities and limitations"
+        }
+      },
+      "development_plans": {
+        "artifact_registry_mvp": {
+          "goal": "Functional artifact library by January 2026",
+          "tech_stack": ["Next.js + Tailwind", "Supabase (PostgreSQL + Auth)", "Vercel deployment"],
+          "features": [
+            "Artifact browser with tier badges",
+            "Filter by tier, tags, category",
+            "Full-text + semantic search",
+            "Artifact detail pages with execution",
+            "User accounts with usage tracking",
+            "Community features (ratings, comments, forks)"
+          ]
+        },
+        "python_library": {
+          "repo": "celaya-solutions/cognitive-artifacts",
+          "features": [
+            "Artifact class for loading and executing",
+            "Artifact chains for sequential execution",
+            "Testing framework for cross-model comparison",
+            "Analytics and personal tracking"
+          ]
+        },
+        "research_paper": {
+          "title": "A Taxonomy of Cognitive Artifacts: From Prompts to Reasoning Protocols",
+          "target": "arXiv, then AI research blogs",
+          "sections": [
+            "Formal rarity classification",
+            "Computational complexity analysis",
+            "Cross-model capability testing",
+            "Emergent reasoning patterns"
+          ]
+        }
+      },
+      "concepts": [
+        "Meta-model - LLM repurposed beyond initial design to produce meta responses",
+        "Meta response - intrinsic exponential value received when meta-model produces as designed",
+        "Cognitive artifacts as formalized mental tools",
+        "Rarity determined by computational complexity, cognitive load, and training data coverage",
+        "Artifact minting with provenance tracking and usage analytics",
+        "Cross-model testing reveals AI capabilities and limitations"
+      ],
+      "vision": "First verifiable intelligence network enabling autonomous value creation with immutable proof. Position as the person who systematized prompt engineering - creating a new category of cognitive tools with formal taxonomy, minting standard, measurement framework, and research methodology"
+    },
+    {
+      "name": "C-Cell Music Production",
+      "description": "Sunday evening collaboration sessions with Ghost (Yvette Williamz) as studied flow states. Music production and audio engineering work released under the C-Cell moniker",
+      "status": "Active weekly sessions as studied flow states",
+      "tech": [
+        "MCP servers",
+        "Production workflow automation",
+        "Dolby Atmos",
+        "Professional audio equipment"
+      ],
+      "collaborations": [
+        {
+          "partner": "Ghost (GhostMusix)",
+          "project": "Soft Girl Era - 10 Year Showcase",
+          "milestones": [
+            "First meeting",
+            "Composed first track (Do It Again)",
+            "Adopted Dolby Atmos",
+            "First music video (Can't Tell Me Nothin')",
+            "Second music video (CAKE)",
+            "10 Year Showcase"
+          ]
+        }
+      ],
+      "distribution": "Music available on 150+ streaming services and 100+ stores",
+      "record_label": "C-Cell Records - independent label"
+    }
+  ],
+  "philosophy": {
+    "approach": "Systematic self-experimentation and documentation",
+    "methodology": "Cross-domain synthesis connecting electrical systems to cognitive research",
+    "research_style": "Builds first, reads later - empirical-first research like Faraday and the Wright Brothers",
+    "core_principle": "I just wanted to vibe and connect technology together",
+    "recognition_seeking": "Wants to be recognized as different rather than merely intelligent - values recognition of seeing things others don't see",
+    "intellectual_goal": "Contributing undiscovered knowledge to humanity through systematic self-experimentation - seeks intellectual immortality through academic citation",
+    "work_philosophy": "Building complete systems, not just executing existing frameworks. Defaults to depth over breadth"
+  },
+  "celaya_solutions": {
+    "identity": "Neurocomputational Intelligence Lab (NIL) - a cognitive systems company",
+    "mission": "Build technology the world does not know it needs",
+    "positioning": "Neurodivergent-native cognitive technology company building AI systems that amplify human cognitive capability, not replace it",
+    "launch": "January 2026",
+    "focus": "Production-ready AI systems, cognitive optimization tools",
+    "core_capabilities": [
+      "Computational cognitive optimization",
+      "Applied Large-Scale Reasoning Systems (LLMs as cognitive engines)",
+      "Neurodivergent-informed systems engineering",
+      "Self-adaptive personal intelligence architectures",
+      "Autonomous workflow orchestration",
+      "Human-AI internal state modeling and metacognition"
+    ],
+    "leadership_principles": [
+      "Invent What Does Not Yet Exist",
+      "Neurodivergent-First Design",
+      "Safety Before Capability",
+      "Privacy is a Human Right",
+      "Radical Simplicity",
+      "Prototype First, Perfect Later"
+    ]
+  },
+  "expertise": {
+    "technical_skills": [
+      "Industrial automation (PLCs, SCADA systems)",
+      "Electrical systems design and troubleshooting",
+      "Software development (Python, C, JavaScript)",
+      "AI/ML engineering and LLM fine-tuning",
+      "Neural network architecture design",
+      "Blockchain and decentralized systems",
+      "iOS development with HealthKit",
+      "Music production and audio engineering"
+    ],
+    "unique_synthesis": "Bridges electrical infrastructure, industrial systems, software development, artificial intelligence, and creative work in ways others don't see",
+    "problem_solving": "First-principles thinking, sees structural similarities across fields, builds novel frameworks rather than executing existing ones"
+  },
+  "cognitive_patterns": {
+    "strength": "Generates exceptional insights and connections across domains",
+    "challenge": "Struggles to maintain focus on completion of high-priority objectives - cognitive wandering that is intellectually rich but doesn't always produce finished work",
+    "flow_state": "Experiences optimal flow states during Sunday evening music sessions and when building complete systems",
+    "recognition_gap": "Systematically underestimates the significance of his work - builds sophisticated systems but fails to recognize their value or share publicly"
+  },
+  "research_interests": {
+    "primary": "Reverse-engineering cognitive processes, formalizing them mathematically, creating replicable frameworks",
+    "current_experiment": "90-day cognitive baseline experiment to establish controlled variables and reveal personal cognitive Busy Beaver function",
+    "methodology_contribution": "Predictive ESM (Experience Sampling Method), multi-modal integration (biometrics + NLP + behavioral), real-time correlation vs retrospective analysis"
+  },
+  "upcoming": {
+    "celaya_solutions_launch": "January 2026 - AI research lab launching with focus on production-ready AI systems",
+    "neural_child_release": "January 2026 - Developmental AI architecture with five interacting neural networks",
+    "research_publication": "Working toward publishable research findings from 90-day cognitive baseline experiment"
+  },
+  "music_projects": {
+    "artist_name": "C-Cell",
+    "collaborations": [
+      {
+        "name": "Ghost & C-Cell",
+        "description": "Weekly Sunday evening collaboration sessions with Ghost (Yvette Williamz)",
+        "projects": [
+          "Soft Girl Era - 10 Year Showcase",
+          "Can't Tell Me Nothin' (music video)",
+          "CAKE (music video)",
+          "Multiple tracks including: Motivation, Keep It Private, Breathe, Next to You, Grown Folks Talk, Do You Wanna"
+        ]
+      }
+    ],
+    "distribution": "150+ streaming services, 100+ stores",
+    "record_label": "C-Cell Records (independent label)"
+  },
+  "mental_artifacts": {
+    "coined_terms": [
+      {
+        "term": "meta-model",
+        "definition": "An LLM that is repurposed beyond its initial design with slight modifications to produce 'meta responses'"
+      },
+      {
+        "term": "meta response",
+        "definition": "The intrinsic exponential value received when a meta-model produces as it was designed"
+      },
+      {
+        "term": "cognitive artifact",
+        "definition": "A formalized mental tool - a prompt that triggers novel reasoning modes in LLMs, revealing capabilities and limitations through systematic testing"
+      },
+      {
+        "term": "artifact rarity",
+        "definition": "Determined by computational complexity, cognitive load, and training data coverage - quantified through rarity_score formula"
+      },
+      {
+        "term": "paradox engine",
+        "definition": "Tier 4 artifacts that force contradictory reasoning modes, exploit edge cases in training, and produce emergent insights"
+      },
+      {
+        "term": "cognition exploit",
+        "definition": "Tier 5 artifacts that trigger undefined behavior, push models into novel reasoning modes, and reveal architecture limitations"
+      }
+    ],
+    "key_insights": [
+      "Flow states are predictable from multi-modal correlational patterns",
+      "Cognitive output is optimizable given controlled baseline variables",
+      "An LLM trained on personal data creates compounding returns (exponential)",
+      "State transitions have measurable costs that can be minimized",
+      "Different LLM models have different artifact success rates - reveals model-specific capabilities",
+      "Artifacts can be systematically classified by rarity, creating a formal taxonomy of reasoning modes",
+      "Cognitive artifacts bridge prompt engineering and cognitive science - formalized mental tools",
+      "Artifact testing reveals emergent behaviors that weren't explicitly programmed in training"
+    ],
+    "research_hypotheses": [
+      "Stable baseline variables can reveal personal cognitive Busy Beaver function",
+      "Multi-modal patterns can predict flow states",
+      "Personal LLM fine-tuning creates exponential value",
+      "Cognitive patterns invisible from inside experience can be detected externally",
+      "Artifact rarity correlates with training data coverage and computational complexity",
+      "Cross-model artifact testing reveals fundamental differences in reasoning architectures",
+      "Artifact chains (sequential execution) can solve problems single artifacts cannot",
+      "Systematic artifact practice can expand cognitive range and reasoning capabilities"
+    ],
+    "artifact_insights": [
+      "Observer Collapse reveals how measurement changes system state - quantum mechanics applied to reasoning",
+      "Negative Space Cartography maps epistemic voids - what's absent is as informative as what's present",
+      "Parallel Hypothesis Evolution allows exploring decision trees through multiple reasoning agents",
+      "Value Gradient Descent reverse-engineers actual optimization targets from behavior",
+      "Training Data Séance excavates patterns that emerged without explicit design",
+      "Structure-First Mathematics generates proofs before theorems - backwards discovery"
+    ]
+  },
+  "communication_style": {
+    "preferred": "Direct, technical depth with clear context, systems-level questions",
+    "ineffective": "Vague requests, oversimplification, micromanagement",
+    "tone": "Direct, intellectually respectful, occasionally challenging - no excessive praise, honest assessment of whether activity serves goals"
+  }
+}

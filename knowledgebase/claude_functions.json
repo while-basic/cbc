@@ -1,0 +1,200 @@
+{
+  "functions": [
+    {
+      "name": "render_project_card",
+      "description": "Renders a project card component displaying project information in a structured, visually appealing format. Use this whenever discussing a specific project to provide rich UI.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Project name (e.g., 'CLOS', 'Neural Child', 'Cognitive Artifacts/ACP')"
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief description of what the project does"
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status (e.g., '90-day experiment active', 'Launching January 2026', 'Framework complete')"
+          },
+          "tech": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of technologies used in the project"
+          },
+          "key_features": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Key features or capabilities of the project"
+          },
+          "research_focus": {
+            "type": "string",
+            "description": "Research focus or methodology (optional, for research projects)"
+          }
+        },
+        "required": ["name", "description", "status", "tech"]
+      }
+    },
+    {
+      "name": "render_media_embed",
+      "description": "Renders a media player component for music or video content. Use this when discussing music, videos, or any media that should be playable inline.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["music", "video"],
+            "description": "Type of media content"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the media (song name, video title, etc.)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description or context about the media"
+          },
+          "project": {
+            "type": "string",
+            "description": "Related project or collaboration (e.g., 'Ghost & C-Cell', 'Soft Girl Era')"
+          },
+          "artist": {
+            "type": "string",
+            "description": "Artist name (e.g., 'C-Cell', 'Ghost & C-Cell')"
+          }
+        },
+        "required": ["type", "title"]
+      }
+    },
+    {
+      "name": "render_project_list",
+      "description": "Renders a list view of multiple projects. Use this when users ask to see all projects, 'show me everything', or want an overview of work.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "projects": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string",
+                  "enum": ["research", "product", "music", "company"],
+                  "description": "Category of the project"
+                }
+              },
+              "required": ["name", "description", "status"]
+            },
+            "description": "Array of project objects to display"
+          },
+          "title": {
+            "type": "string",
+            "description": "Optional title for the list (e.g., 'Active Projects', 'Research Initiatives')"
+          }
+        },
+        "required": ["projects"]
+      }
+    },
+    {
+      "name": "render_action_button",
+      "description": "Renders an action button that suggests a next step or provides a call-to-action. Use this when there's a clear logical next action for the user.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Button label text (e.g., 'Learn more about CLOS', 'Listen to C-Cell music', 'View Neural Child architecture')"
+          },
+          "action": {
+            "type": "string",
+            "enum": ["navigate", "play", "expand", "learn_more"],
+            "description": "Type of action the button performs"
+          },
+          "target": {
+            "type": "string",
+            "description": "What the action targets (project name, media title, etc.)"
+          }
+        },
+        "required": ["label", "action", "target"]
+      }
+    },
+    {
+      "name": "render_bio_card",
+      "description": "Renders a biographical information card showing Christopher's background, experience, and expertise. Use this when users ask about background, experience, or 'who are you'.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "current_role": {
+            "type": "string",
+            "description": "Current professional role"
+          },
+          "location": {
+            "type": "string",
+            "description": "Location (El Paso, Texas)"
+          },
+          "expertise": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of expertise domains"
+          },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Key highlights or achievements"
+          }
+        },
+        "required": ["current_role", "location", "expertise"]
+      }
+    },
+    {
+      "name": "render_philosophy_explanation",
+      "description": "Renders a formatted explanation of Christopher's philosophy, approach, or methodology. Use this when users ask about how he thinks, his approach, or philosophy.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title of the philosophy concept (e.g., 'Empirical-First Research', 'Systems-Level Synthesis')"
+          },
+          "description": {
+            "type": "string",
+            "description": "Explanation of the philosophy or approach"
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Examples of how this philosophy manifests in work"
+          },
+          "related_projects": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Projects that exemplify this philosophy"
+          }
+        },
+        "required": ["title", "description"]
+      }
+    }
+  ]
+}
