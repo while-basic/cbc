@@ -10,12 +10,17 @@ import Foundation
 class ClaudeService {
     static let shared = ClaudeService()
 
-    private let apiKey: String
     private let baseURL = "https://api.anthropic.com/v1/messages"
 
-    private init() {
-        // API key should be set via environment or configuration
-        self.apiKey = ProcessInfo.processInfo.environment["ANTHROPIC_API_KEY"] ?? ""
+    private init() {}
+
+    private var apiKey: String {
+        // Try environment variable first (for development)
+        if let envKey = ProcessInfo.processInfo.environment["ANTHROPIC_API_KEY"], !envKey.isEmpty {
+            return envKey
+        }
+        // Fall back to Keychain (for production/remote use)
+        return KeychainService.shared.getAPIKey() ?? ""
     }
 
     func sendMessage(_ userMessage: String, conversationHistory: [Message]) async throws -> String {
@@ -116,7 +121,7 @@ enum ClaudeError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .missingAPIKey:
-            return "Claude API key not configured. Set ANTHROPIC_API_KEY environment variable."
+            return "Claude API key not configured. Tap the settings icon to add your API key."
         case .invalidResponse:
             return "Invalid response from Claude API"
         case .apiError(let statusCode, let message):

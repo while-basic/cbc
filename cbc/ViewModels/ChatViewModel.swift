@@ -14,11 +14,19 @@ class ChatViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
 
+    init() {
+        // Load saved messages on initialization
+        self.messages = StorageService.shared.loadMessages()
+    }
+
     func sendMessage(_ text: String) async {
         guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
 
         let userMessage = Message(content: text, isUser: true)
         messages.append(userMessage)
+
+        // Save immediately after user message
+        StorageService.shared.saveMessages(messages)
 
         isLoading = true
         errorMessage = nil
@@ -35,6 +43,9 @@ class ChatViewModel: ObservableObject {
                 projectCards: projects.isEmpty ? nil : projects
             )
             messages.append(assistantMessage)
+
+            // Save messages after successful response
+            StorageService.shared.saveMessages(messages)
 
         } catch {
             errorMessage = error.localizedDescription
@@ -82,5 +93,10 @@ class ChatViewModel: ObservableObject {
     func clearMessages() {
         messages = []
         errorMessage = nil
+        StorageService.shared.clearMessages()
+    }
+
+    private func saveMessages() {
+        StorageService.shared.saveMessages(messages)
     }
 }

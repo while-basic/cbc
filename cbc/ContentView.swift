@@ -11,6 +11,7 @@ struct ContentView: View {
     @StateObject private var viewModel = ChatViewModel()
     @State private var inputText = ""
     @State private var scrollProxy: ScrollViewProxy?
+    @State private var showingSettings = false
 
     var body: some View {
         ZStack {
@@ -21,6 +22,11 @@ struct ContentView: View {
             VStack(spacing: 0) {
                 // Header
                 headerView
+
+                // API Key Warning
+                if !KeychainService.shared.hasAPIKey && ProcessInfo.processInfo.environment["ANTHROPIC_API_KEY"] == nil {
+                    apiKeyWarningBanner
+                }
 
                 // Messages
                 ScrollViewReader { proxy in
@@ -73,16 +79,53 @@ struct ContentView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .sheet(isPresented: $showingSettings) {
+            SettingsView()
+        }
+    }
+
+    private var apiKeyWarningBanner: some View {
+        Button(action: { showingSettings = true }) {
+            HStack {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundColor(.orange)
+
+                Text("Tap to configure Claude API key")
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .foregroundColor(Color(hex: "A0A0A0"))
+            }
+            .padding()
+            .background(Color.orange.opacity(0.2))
+        }
     }
 
     private var headerView: some View {
-        VStack(spacing: 8) {
-            Text("Christopher Celaya")
-                .font(.system(size: 34, weight: .bold, design: .default))
-                .foregroundColor(.white)
+        HStack {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Christopher Celaya")
+                    .font(.system(size: 34, weight: .bold, design: .default))
+                    .foregroundColor(.white)
 
-            PulsingStatusView()
+                PulsingStatusView()
+            }
+
+            Spacer()
+
+            Button(action: { showingSettings = true }) {
+                Image(systemName: "gear")
+                    .font(.system(size: 20))
+                    .foregroundColor(Color(hex: "A0A0A0"))
+                    .padding(12)
+                    .background(Color(hex: "1A1A1A"))
+                    .clipShape(Circle())
+            }
         }
+        .padding(.horizontal)
         .padding(.top, 60)
         .padding(.bottom, 24)
         .frame(maxWidth: .infinity)
