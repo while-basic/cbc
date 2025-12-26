@@ -145,7 +145,7 @@ struct PulsingStatusView: View {
                 .opacity(isPulsing ? 1.0 : 0.6)
                 .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: isPulsing)
 
-            Text("Currently: Building CLOS cognitive optimization systems")
+            Text("Currently: 90-day CLOS protocol • Neural Child launching Jan 2026")
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "A0A0A0"))
         }
