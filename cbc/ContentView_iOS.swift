@@ -1,18 +1,18 @@
 //----------------------------------------------------------------------------
-//File:       ContentView.swift
+//File:       ContentView_iOS.swift
 //Project:     cbc
 //Created by:  Celaya Solutions, 2025
 //Author:      Christopher Celaya <chris@chriscelaya.com>
-//Description: macOS-specific ContentView
+//Description: iOS-specific ContentView (companion app)
 //Version:     1.0.0
 //License:     MIT
 //Last Update: November 2025
 //----------------------------------------------------------------------------
 
-#if os(macOS)
+#if os(iOS)
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView_iOS: View {
     @StateObject private var viewModel = ChatViewModel()
     @State private var inputText = ""
     @State private var scrollProxy: ScrollViewProxy?
@@ -118,6 +118,6 @@ struct PulsingStatusView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView_iOS()
 }
 #endif

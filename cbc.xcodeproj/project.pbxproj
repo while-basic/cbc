@@ -6,8 +6,38 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DD33A7E82EFE444400598245 /* cbcWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DD33A7E72EFE444400598245 /* cbcWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DD33A7E92EFE444400598245 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD33A7402EFE19C300598245 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD33A7E62EFE444400598245;
+			remoteInfo = "cbcWatch Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD33A7F52EFE444500598245 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DD33A7E82EFE444400598245 /* cbcWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		DD33A7482EFE19C300598245 /* cbc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cbc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD33A7DB2EFE444300598245 /* cbcWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cbcWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD33A7E72EFE444400598245 /* cbcWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cbcWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +46,44 @@
 			path = cbc;
 			sourceTree = "<group>";
 		};
+		DD33A7BA2EFE442800598245 /* cbcWatch */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = cbcWatch;
+			sourceTree = "<group>";
+		};
+		DD33A7C92EFE442A00598245 /* cbcWatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "cbcWatch Watch App";
+			sourceTree = "<group>";
+		};
+		DD33A7DC2EFE444300598245 /* cbcWatch */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = cbcWatch;
+			sourceTree = "<group>";
+		};
+		DD33A7EB2EFE444400598245 /* cbcWatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "cbcWatch Watch App";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DD33A7452EFE19C300598245 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD33A7D82EFE444300598245 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD33A7E42EFE444400598245 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +97,10 @@
 			isa = PBXGroup;
 			children = (
 				DD33A74A2EFE19C300598245 /* cbc */,
+				DD33A7BA2EFE442800598245 /* cbcWatch */,
+				DD33A7C92EFE442A00598245 /* cbcWatch Watch App */,
+				DD33A7DC2EFE444300598245 /* cbcWatch */,
+				DD33A7EB2EFE444400598245 /* cbcWatch Watch App */,
 				DD33A7492EFE19C300598245 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				DD33A7482EFE19C300598245 /* cbc.app */,
+				DD33A7DB2EFE444300598245 /* cbcWatch.app */,
+				DD33A7E72EFE444400598245 /* cbcWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +140,52 @@
 			productReference = DD33A7482EFE19C300598245 /* cbc.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DD33A7DA2EFE444300598245 /* cbcWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD33A7F62EFE444500598245 /* Build configuration list for PBXNativeTarget "cbcWatch" */;
+			buildPhases = (
+				DD33A7D72EFE444300598245 /* Sources */,
+				DD33A7D82EFE444300598245 /* Frameworks */,
+				DD33A7D92EFE444300598245 /* Resources */,
+				DD33A7F52EFE444500598245 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD33A7EA2EFE444400598245 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DD33A7DC2EFE444300598245 /* cbcWatch */,
+			);
+			name = cbcWatch;
+			packageProductDependencies = (
+			);
+			productName = cbcWatch;
+			productReference = DD33A7DB2EFE444300598245 /* cbcWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DD33A7E62EFE444400598245 /* cbcWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD33A7F22EFE444500598245 /* Build configuration list for PBXNativeTarget "cbcWatch Watch App" */;
+			buildPhases = (
+				DD33A7E32EFE444400598245 /* Sources */,
+				DD33A7E42EFE444400598245 /* Frameworks */,
+				DD33A7E52EFE444400598245 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				DD33A7EB2EFE444400598245 /* cbcWatch Watch App */,
+			);
+			name = "cbcWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "cbcWatch Watch App";
+			productReference = DD33A7E72EFE444400598245 /* cbcWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -81,6 +197,12 @@
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					DD33A7472EFE19C300598245 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					DD33A7DA2EFE444300598245 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					DD33A7E62EFE444400598245 = {
 						CreatedOnToolsVersion = 26.1.1;
 					};
 				};
@@ -100,12 +222,28 @@
 			projectRoot = "";
 			targets = (
 				DD33A7472EFE19C300598245 /* cbc */,
+				DD33A7DA2EFE444300598245 /* cbcWatch */,
+				DD33A7E62EFE444400598245 /* cbcWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DD33A7462EFE19C300598245 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD33A7D92EFE444300598245 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD33A7E52EFE444400598245 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +260,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD33A7D72EFE444300598245 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD33A7E32EFE444400598245 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DD33A7EA2EFE444400598245 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD33A7E62EFE444400598245 /* cbcWatch Watch App */;
+			targetProxy = DD33A7E92EFE444400598245 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DD33A7532EFE19C500598245 /* Debug */ = {
@@ -246,6 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = cbc/cbc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = APHMV4Q24X;
@@ -272,7 +433,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cbc.cs.cbc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -290,6 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = cbc/cbc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = APHMV4Q24X;
@@ -316,7 +478,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cbc.cs.cbc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -326,6 +488,146 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		DD33A7F32EFE444500598245 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = APHMV4Q24X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = cbcWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.cbc.cs.cbc.watchkitapp.cbcWatch;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cbc.cs.cbc.watchkitapp.cbcWatch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		DD33A7F42EFE444500598245 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = APHMV4Q24X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = cbcWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.cbc.cs.cbc.watchkitapp.cbcWatch;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cbc.cs.cbc.watchkitapp.cbcWatch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		DD33A7F72EFE444500598245 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = cbcWatch/cbcWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = APHMV4Q24X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = cbcWatch;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cbc.cs.cbc.watchkitapp.cbcWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DD33A7F82EFE444500598245 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = cbcWatch/cbcWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = APHMV4Q24X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = cbcWatch;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cbc.cs.cbc.watchkitapp.cbcWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -346,6 +648,24 @@
 			buildConfigurations = (
 				DD33A7562EFE19C500598245 /* Debug */,
 				DD33A7572EFE19C500598245 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD33A7F22EFE444500598245 /* Build configuration list for PBXNativeTarget "cbcWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD33A7F32EFE444500598245 /* Debug */,
+				DD33A7F42EFE444500598245 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD33A7F62EFE444500598245 /* Build configuration list for PBXNativeTarget "cbcWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD33A7F72EFE444500598245 /* Debug */,
+				DD33A7F82EFE444500598245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
