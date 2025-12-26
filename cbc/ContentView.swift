@@ -33,8 +33,14 @@ struct ContentView: View {
                         LazyVStack(spacing: 0) {
                             // Messages
                             ForEach(viewModel.messages) { message in
-                                MessageBubbleView(message: message)
-                                    .id(message.id)
+                                MessageBubbleView(
+                                    message: message,
+                                    isActive: viewModel.activePathIds.contains(message.id),
+                                    onTap: {
+                                        viewModel.selectMessage(message.id)
+                                    }
+                                )
+                                .id(message.id)
                             }
 
                             // Typing indicator

@@ -13,12 +13,14 @@ struct Message: Identifiable, Codable {
     let isUser: Bool
     let timestamp: Date
     var projectCards: [Project]?
+    var parentId: UUID?
 
-    init(id: UUID = UUID(), content: String, isUser: Bool, timestamp: Date = Date(), projectCards: [Project]? = nil) {
+    init(id: UUID = UUID(), content: String, isUser: Bool, timestamp: Date = Date(), projectCards: [Project]? = nil, parentId: UUID? = nil) {
         self.id = id
         self.content = content
         self.isUser = isUser
         self.timestamp = timestamp
         self.projectCards = projectCards
+        self.parentId = parentId
     }
 }

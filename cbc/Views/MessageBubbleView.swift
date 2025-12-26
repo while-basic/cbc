@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MessageBubbleView: View {
     let message: Message
+    let isActive: Bool
+    let onTap: () -> Void
 
     var body: some View {
         VStack(alignment: message.isUser ? .trailing : .leading, spacing: 12) {
@@ -22,7 +24,7 @@ struct MessageBubbleView: View {
                 .frame(maxWidth: .infinity, alignment: message.isUser ? .trailing : .leading)
 
             // Project cards if any
-            if let projects = message.projectCards, !projects.isEmpty {
+            if isActive, let projects = message.projectCards, !projects.isEmpty {
                 LazyVStack(spacing: 16) {
                     ForEach(projects) { project in
                         ProjectCardView(project: project)
@@ -33,29 +35,42 @@ struct MessageBubbleView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
+        .opacity(isActive ? 1.0 : 0.1)
+        .onTapGesture {
+            onTap()
+        }
+        .animation(.easeInOut(duration: 0.7), value: isActive)
         .drawingGroup() // Optimize rendering for complex views
     }
 }
 
 #Preview {
     VStack(spacing: 16) {
-        MessageBubbleView(message: Message(
-            content: "What are you working on?",
-            isUser: true
-        ))
+        MessageBubbleView(
+            message: Message(
+                content: "What are you working on?",
+                isUser: true
+            ),
+            isActive: true,
+            onTap: {}
+        )
 
-        MessageBubbleView(message: Message(
-            content: "I'm currently focused on several key projects. Let me show you CLOS, my primary focus right now.",
-            isUser: false,
-            projectCards: [
-                Project(
-                    name: "CLOS",
-                    description: "Cognitive Life Operating System - AI-augmented cognitive optimization using voice journaling and multi-modal analysis",
-                    status: "90-day self-experimentation protocol active",
-                    tech: ["iOS Shortcuts", "Voice transcription", "Pattern analysis"]
-                )
-            ]
-        ))
+        MessageBubbleView(
+            message: Message(
+                content: "I'm currently focused on several key projects. Let me show you CLOS, my primary focus right now.",
+                isUser: false,
+                projectCards: [
+                    Project(
+                        name: "CLOS",
+                        description: "Cognitive Life Operating System - AI-augmented cognitive optimization using voice journaling and multi-modal analysis",
+                        status: "90-day self-experimentation protocol active",
+                        tech: ["iOS Shortcuts", "Voice transcription", "Pattern analysis"]
+                    )
+                ]
+            ),
+            isActive: true,
+            onTap: {}
+        )
     }
     .background(Color(hex: "0A0A0A"))
 }

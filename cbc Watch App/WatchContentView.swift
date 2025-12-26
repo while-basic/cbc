@@ -39,7 +39,13 @@ struct WatchContentView: View {
                     
                     // Messages
                     ForEach(viewModel.messages) { message in
-                        WatchMessageBubbleView(message: message)
+                        WatchMessageBubbleView(
+                            message: message,
+                            isActive: viewModel.activePathIds.contains(message.id),
+                            onTap: {
+                                viewModel.selectMessage(message.id)
+                            }
+                        )
                     }
                     
                     // Typing indicator
