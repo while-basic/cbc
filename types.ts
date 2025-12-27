@@ -1,4 +1,9 @@
 
+export interface User {
+  id: string;
+  name: string;
+}
+
 export interface Project {
   name: string;
   description: string;
@@ -65,4 +70,5 @@ export interface ChatMessage {
   text: string;
   cards?: CardData[];
   id: string;
+  parentId?: string;
 }
