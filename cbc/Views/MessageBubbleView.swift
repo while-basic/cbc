@@ -1,22 +1,13 @@
-<<<<<<< HEAD
 //----------------------------------------------------------------------------
 //File:       MessageBubbleView.swift
 //Project:     cbc
 //Created by:  Celaya Solutions, 2025
 //Author:      Christopher Celaya <chris@chriscelaya.com>
-//Description: Message bubble view with improved styling and animations
-//Version:     1.0.0
+//Description: Message bubble with text resolution animation
+//Version:     2.0.0 - Subtle Physics Edition
 //License:     MIT
-//Last Update: November 2025
+//Last Update: December 2025
 //----------------------------------------------------------------------------
-=======
-//
-//  MessageBubbleView.swift
-//  cbc
-//
-//  Created by Christopher Celaya on 12/25/25.
-//
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
 
 import SwiftUI
 
@@ -25,45 +16,37 @@ struct MessageBubbleView: View {
     let isActive: Bool
     let onTap: () -> Void
 
+    // Calculate message age for time-based dimming
+    private var messageAge: TimeInterval {
+        Date().timeIntervalSince(message.timestamp)
+    }
+
     var body: some View {
-<<<<<<< HEAD
         VStack(alignment: message.isUser ? .trailing : .leading, spacing: 16) {
-            // Message text
+            // Message text with resolution animation
             HStack {
                 if message.isUser {
                     Spacer(minLength: 60)
                 }
-                
+
                 Text(message.content)
-                    .font(.system(size: 15, weight: .regular, design: .default))
+                    .font(.system(size: 15, weight: .regular, design: .monospaced))
                     .foregroundColor(message.isUser ? .white : Color(hex: "E0E0E0"))
-                    .lineSpacing(4)
+                    .lineSpacing(6)
                     .padding(.horizontal, 18)
                     .padding(.vertical, 14)
                     .background(
                         Group {
                             if message.isUser {
-                                LinearGradient(
-                                    gradient: Gradient(colors: [
-                                        Color(hex: "0066FF"),
-                                        Color(hex: "0052CC")
-                                    ]),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
+                                Color(hex: "0066FF").opacity(0.15)
                             } else {
                                 Color(hex: "1A1A1A")
                             }
                         }
                     )
-                    .cornerRadius(20)
-                    .shadow(
-                        color: message.isUser ? Color(hex: "0066FF").opacity(0.3) : Color.black.opacity(0.2),
-                        radius: message.isUser ? 8 : 4,
-                        x: 0,
-                        y: 2
-                    )
-                
+                    .cornerRadius(2)
+                    .textResolution(delay: message.isUser ? 0 : 0.08)
+
                 if !message.isUser {
                     Spacer(minLength: 60)
                 }
@@ -72,53 +55,25 @@ struct MessageBubbleView: View {
             // Project cards if any
             if isActive, let projects = message.projectCards, !projects.isEmpty {
                 LazyVStack(spacing: 12) {
-=======
-        VStack(alignment: message.isUser ? .trailing : .leading, spacing: 12) {
-            // Message text
-            Text(message.content)
-                .font(.body)
-                .foregroundColor(.white)
-                .padding(16)
-                .background(message.isUser ? Color(hex: "0066FF") : Color(hex: "1A1A1A"))
-                .cornerRadius(16)
-                .frame(maxWidth: .infinity, alignment: message.isUser ? .trailing : .leading)
-
-            // Project cards if any
-            if isActive, let projects = message.projectCards, !projects.isEmpty {
-                LazyVStack(spacing: 16) {
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
-                    ForEach(projects) { project in
+                    ForEach(Array(projects.enumerated()), id: \.element.id) { index, project in
                         ProjectCardView(project: project)
+                            .textResolution(delay: Double(index) * 0.12)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-<<<<<<< HEAD
-                .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 12)
+        .timeDimming(age: messageAge)
         .opacity(isActive ? 1.0 : 0.15)
         .scaleEffect(isActive ? 1.0 : 0.98)
         .onTapGesture {
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+            withAnimation(.easeOut(duration: 0.2)) {
                 onTap()
             }
         }
-        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isActive)
         .drawingGroup()
-=======
-            }
-        }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 8)
-        .opacity(isActive ? 1.0 : 0.1)
-        .onTapGesture {
-            onTap()
-        }
-        .animation(.easeInOut(duration: 0.7), value: isActive)
-        .drawingGroup() // Optimize rendering for complex views
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
     }
 }
 

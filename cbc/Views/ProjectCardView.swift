@@ -1,22 +1,13 @@
-<<<<<<< HEAD
 //----------------------------------------------------------------------------
 //File:       ProjectCardView.swift
 //Project:     cbc
 //Created by:  Celaya Solutions, 2025
 //Author:      Christopher Celaya <chris@chriscelaya.com>
-//Description: Project card view with improved layout and styling
-//Version:     1.0.0
+//Description: Project card with subtle physics aesthetics
+//Version:     2.0.0 - Subtle Physics Edition
 //License:     MIT
-//Last Update: November 2025
+//Last Update: December 2025
 //----------------------------------------------------------------------------
-=======
-//
-//  ProjectCardView.swift
-//  cbc
-//
-//  Created by Christopher Celaya on 12/25/25.
-//
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
 
 import SwiftUI
 
@@ -24,125 +15,53 @@ struct ProjectCardView: View {
     let project: Project
 
     var body: some View {
-<<<<<<< HEAD
-        VStack(alignment: .leading, spacing: 16) {
-            // Header with title and status
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(project.name)
-                        .font(.system(size: 20, weight: .semibold, design: .rounded))
-                        .foregroundColor(.white)
-                }
-                
-                Spacer()
-                
-                Text(project.status.components(separatedBy: " ").first ?? "")
-                    .font(.system(size: 9, weight: .bold, design: .default))
-                    .foregroundColor(Color(hex: "808080"))
-                    .tracking(0.2)
-                    .textCase(.uppercase)
-            }
+        VStack(alignment: .leading, spacing: 14) {
+            // Title (monospaced, subtle)
+            Text(project.name)
+                .font(.system(size: 16, weight: .regular, design: .monospaced))
+                .foregroundColor(.white.opacity(0.9))
+                .tracking(0.5)
 
             // Description
             Text(project.description)
-                .font(.system(size: 14, weight: .regular, design: .default))
+                .font(.system(size: 13, weight: .light, design: .monospaced))
                 .foregroundColor(Color(hex: "B0B0B0"))
-                .lineSpacing(4)
+                .lineSpacing(5)
                 .fixedSize(horizontal: false, vertical: true)
 
-=======
-        VStack(alignment: .leading, spacing: 12) {
-            Text(project.name)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-
-            Text(project.description)
-                .font(.body)
-                .foregroundColor(Color(hex: "A0A0A0"))
-                .fixedSize(horizontal: false, vertical: true)
-
-            HStack {
-                Text(project.status)
-                    .font(.caption)
-                    .foregroundColor(Color(hex: "0066FF"))
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(Color(hex: "0066FF").opacity(0.2))
-                    .cornerRadius(4)
-
-                Spacer()
-            }
-
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
             // Tech tags
-            FlowLayout(spacing: 8) {
+            FlowLayout(spacing: 6) {
                 ForEach(project.tech, id: \.self) { tech in
                     Text(tech)
-<<<<<<< HEAD
-                        .font(.system(size: 11, weight: .regular, design: .monospaced))
-                        .foregroundColor(Color(hex: "808080"))
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(Color(hex: "0F0F0F"))
-                        .cornerRadius(6)
+                        .font(.system(size: 9, weight: .regular, design: .monospaced))
+                        .foregroundColor(Color(hex: "606060"))
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color(hex: "0B0B0C"))
+                        .cornerRadius(2)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color(hex: "2A2A2A"), lineWidth: 0.5)
+                            RoundedRectangle(cornerRadius: 2)
+                                .stroke(Color(hex: "0066FF").opacity(0.1), lineWidth: 0.5)
                         )
                 }
             }
-            
-            // Footer with full status
+
+            // Status (peripheral indicator style)
             Divider()
-                .background(Color(hex: "2A2A2A"))
-                .padding(.top, 4)
-            
-            HStack {
-                Text(project.status)
-                    .font(.system(size: 10, weight: .regular, design: .monospaced))
-                    .foregroundColor(Color(hex: "707070"))
-                    .tracking(0.5)
-                
-                Spacer()
-                
-                Text("Details →")
-                    .font(.system(size: 10, weight: .semibold, design: .default))
-                    .foregroundColor(Color(hex: "808080"))
-                    .tracking(0.2)
-                    .textCase(.uppercase)
-            }
-            .padding(.top, 8)
+                .background(Color(hex: "1A1A1A"))
+                .padding(.vertical, 4)
+
+            Text(project.status)
+                .peripheralIndicator()
+                .tracking(1)
         }
-        .padding(24)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color(hex: "1A1A1A"))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color(hex: "2A2A2A"), lineWidth: 0.5)
-                )
+        .padding(20)
+        .background(Color(hex: "0F0F0F"))
+        .cornerRadius(2)
+        .overlay(
+            RoundedRectangle(cornerRadius: 2)
+                .stroke(Color(hex: "1A1A1A"), lineWidth: 0.5)
         )
-        .shadow(color: Color.black.opacity(0.4), radius: 12, x: 0, y: 4)
-=======
-                        .font(.caption2)
-                        .foregroundColor(Color(hex: "A0A0A0"))
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 3)
-                        .background(Color(hex: "1A1A1A"))
-                        .cornerRadius(3)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 3)
-                                .stroke(Color(hex: "A0A0A0").opacity(0.3), lineWidth: 0.5)
-                        )
-                }
-            }
-        }
-        .padding(24)
-        .background(Color(hex: "1A1A1A"))
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 2)
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
     }
 }
 
