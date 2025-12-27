@@ -3,10 +3,10 @@
 //Project:     cbc
 //Created by:  Celaya Solutions, 2025
 //Author:      Christopher Celaya <chris@chriscelaya.com>
-//Description: iOS-specific ContentView (companion app)
-//Version:     1.0.0
+//Description: iOS ContentView with subtle physics animations
+//Version:     2.0.0 - Subtle Physics Edition
 //License:     MIT
-//Last Update: November 2025
+//Last Update: December 2025
 //----------------------------------------------------------------------------
 
 #if os(iOS)
@@ -16,20 +16,31 @@ struct ContentView_iOS: View {
     @StateObject private var viewModel = ChatViewModel()
     @State private var inputText = ""
     @State private var scrollProxy: ScrollViewProxy?
+    @State private var stateChangeTrigger: Int = 0
+    @State private var showBaselineEstablished: Bool = false
+    @AppStorage("hasShownBaseline") private var hasShownBaseline: Bool = false
 
     var body: some View {
         ZStack {
-            // Background
-            Color(hex: "0A0A0A")
-                .ignoresSafeArea()
+            // Film grain background (near-black, not pure black)
+            FilmGrainView()
 
             VStack(spacing: 0) {
-                // Header
+                // Header with identity reveal and peripheral indicators
                 headerView
 
-                // Messages
+                // Baseline established signature (first launch only)
+                if showBaselineEstablished && !hasShownBaseline {
+                    BaselineEstablishedView(onComplete: {
+                        hasShownBaseline = true
+                        showBaselineEstablished = false
+                    })
+                    .padding(.top, 20)
+                }
+
+                // Messages (no scroll, time-based dimming)
                 ScrollViewReader { proxy in
-                    ScrollView {
+                    ScrollView(.vertical, showsIndicators: false) {
                         LazyVStack(spacing: 0) {
                             // Messages
                             ForEach(viewModel.messages) { message in
@@ -38,35 +49,38 @@ struct ContentView_iOS: View {
                                     isActive: viewModel.activePathIds.contains(message.id),
                                     onTap: {
                                         viewModel.selectMessage(message.id)
+                                        stateChangeTrigger += 1
                                     }
                                 )
                                 .id(message.id)
                             }
 
-                            // Typing indicator
+                            // Silent latency state (no typing indicator)
                             if viewModel.isLoading {
-                                HStack {
-                                    TypingIndicatorView()
-                                        .padding(.leading, 16)
-                                    Spacer()
-                                }
-                                .padding(.vertical, 8)
+                                SilentLatencyView()
+                                    .padding(.vertical, 20)
                             }
 
-                            // Bottom spacer for scroll
+                            // Bottom spacer
                             Color.clear
                                 .frame(height: 20)
                                 .id("bottom")
                         }
                     }
+                    .scrollDisabled(false)
                     .onAppear {
                         scrollProxy = proxy
+
+                        // Show baseline established on first launch
+                        if !hasShownBaseline {
+                            showBaselineEstablished = true
+                        }
                     }
                     .onChange(of: viewModel.messages.count) { oldCount, newCount in
-                        // Only scroll if a new message was added (not removed)
                         if newCount > oldCount {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                withAnimation(.easeOut(duration: 0.3)) {
+                            stateChangeTrigger += 1
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                                withAnimation(.easeOut(duration: 0.2)) {
                                     proxy.scrollTo("bottom", anchor: .bottom)
                                 }
                             }
@@ -81,105 +95,98 @@ struct ContentView_iOS: View {
                         Task {
                             let message = inputText
                             inputText = ""
+                            stateChangeTrigger += 1
                             await viewModel.sendMessage(message)
                         }
                     },
                     isLoading: viewModel.isLoading
                 )
             }
+            .microJitter(trigger: stateChangeTrigger)
+
+            // Peripheral state indicator (bottom right corner)
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text("Environment V.02-BETA")
+                        .peripheralIndicator()
+                        .padding(.trailing, 16)
+                        .padding(.bottom, 8)
+                }
+            }
         }
         .preferredColorScheme(.dark)
     }
 
     private var headerView: some View {
-<<<<<<< HEAD
-        VStack(spacing: 12) {
-            HStack {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Christopher Celaya")
-                        .font(.system(size: 32, weight: .semibold, design: .rounded))
-                        .foregroundColor(.white)
-                    
-                    PulsingStatusView()
-                }
-                Spacer()
-            }
-            .padding(.horizontal, 20)
+        VStack(spacing: 0) {
+            // Identity reveal animation
+            Text("Christopher Celaya")
+                .font(.system(size: 28, weight: .light, design: .monospaced))
+                .foregroundColor(.white)
+                .tracking(1)
+                .identityReveal()
+                .padding(.top, 50)
+
+            // Status indicator (subtle)
+            PeripheralStatusView()
+                .padding(.top, 12)
         }
-        .padding(.top, 50)
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity)
-        .background(
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(hex: "0A0A0A"),
-                    Color(hex: "0A0A0A").opacity(0.95)
-                ]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        )
-=======
-        VStack(spacing: 8) {
-            Text("Christopher Celaya")
-                .font(.system(size: 34, weight: .bold, design: .default))
-                .foregroundColor(.white)
-
-            PulsingStatusView()
-        }
-        .padding(.top, 60)
-        .padding(.bottom, 24)
-        .frame(maxWidth: .infinity)
-        .background(Color(hex: "0A0A0A"))
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
     }
 }
 
-struct PulsingStatusView: View {
+// MARK: - Peripheral Status View
+struct PeripheralStatusView: View {
     @State private var isPulsing = false
 
     var body: some View {
-<<<<<<< HEAD
-        HStack(spacing: 10) {
-            ZStack {
-                Circle()
-                    .fill(Color(hex: "0066FF").opacity(0.2))
-                    .frame(width: 12, height: 12)
-                    .scaleEffect(isPulsing ? 1.8 : 1.0)
-                    .opacity(isPulsing ? 0 : 0.6)
-                
-                Circle()
-                    .fill(Color(hex: "0066FF"))
-                    .frame(width: 8, height: 8)
-            }
-            .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: false), value: isPulsing)
-
-            Text("Currently: Building CLOS cognitive optimization systems")
-                .font(.system(size: 13, weight: .regular, design: .default))
-                .foregroundColor(Color(hex: "B0B0B0"))
-                .tracking(0.2)
-=======
         HStack(spacing: 8) {
             Circle()
-                .fill(Color(hex: "0066FF"))
-                .frame(width: 8, height: 8)
-                .scaleEffect(isPulsing ? 1.2 : 1.0)
-                .opacity(isPulsing ? 1.0 : 0.6)
-                .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: isPulsing)
+                .fill(Color(hex: "0066FF").opacity(0.4))
+                .frame(width: 6, height: 6)
+                .scaleEffect(isPulsing ? 1.4 : 1.0)
+                .opacity(isPulsing ? 0.2 : 0.6)
+                .animation(.easeInOut(duration: 1.8).repeatForever(autoreverses: false), value: isPulsing)
 
-            Text("Currently: Building CLOS cognitive optimization systems")
-                .font(.subheadline)
-                .foregroundColor(Color(hex: "A0A0A0"))
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
+            Text("cognitive systems online")
+                .font(.system(size: 10, weight: .light, design: .monospaced))
+                .foregroundColor(Color.white.opacity(0.3))
+                .tracking(1.2)
         }
         .onAppear {
             isPulsing = true
         }
-<<<<<<< HEAD
-        .drawingGroup()
-=======
-        .drawingGroup() // Optimize rendering
->>>>>>> c5852787698c13ce07da0d9357cc236b6527617f
+    }
+}
+
+// MARK: - Silent Latency View
+// No spinners, no "thinking..." - just silence and acknowledgment
+struct SilentLatencyView: View {
+    @State private var opacity: Double = 0.0
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Circle()
+                .fill(Color(hex: "0066FF").opacity(0.2))
+                .frame(width: 3, height: 3)
+
+            Circle()
+                .fill(Color(hex: "0066FF").opacity(0.2))
+                .frame(width: 3, height: 3)
+
+            Circle()
+                .fill(Color(hex: "0066FF").opacity(0.2))
+                .frame(width: 3, height: 3)
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4).repeatForever(autoreverses: true)) {
+                opacity = 0.4
+            }
+        }
     }
 }
 
