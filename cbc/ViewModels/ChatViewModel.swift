@@ -13,13 +13,29 @@ import Foundation
 import SwiftUI
 import Combine
 
+#if os(iOS) || os(macOS) || os(watchOS)
+import CloudKit
+#endif
+
 @MainActor
 class ChatViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var activeMessageId: UUID?
-
+    @Published var isSyncing = false
+    
+    private let supabaseService = SupabaseMessageService.shared
+    #if os(iOS) || os(macOS) || os(watchOS)
+    private let cloudKitService = CloudKitMessageService.shared
+    #endif
+    private let authService = AuthService.shared
+    
+    private var conversationId: UUID?
+    #if os(iOS) || os(macOS) || os(watchOS)
+    private var cloudKitConversationId: CKRecord.ID?
+    #endif
+    
     // Compute the active path from root to current anchor
     var activePathIds: Set<UUID> {
         guard let activeId = activeMessageId else { return Set<UUID>() }
@@ -32,6 +48,13 @@ class ChatViewModel: ObservableObject {
         }
 
         return path
+    }
+    
+    init() {
+        // Load messages from database on initialization
+        Task {
+            await loadMessagesFromDatabase()
+        }
     }
 
     // Get conversation context based on active path
@@ -54,6 +77,11 @@ class ChatViewModel: ObservableObject {
 
     func sendMessage(_ text: String) async {
         guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        
+        guard let userId = authService.getSupabaseUserId() ?? authService.getCurrentIdentifier() else {
+            errorMessage = "Not authenticated"
+            return
+        }
 
         let userMessage = Message(
             content: text,
@@ -62,25 +90,34 @@ class ChatViewModel: ObservableObject {
         )
         messages.append(userMessage)
         activeMessageId = userMessage.id
+        
+        // Save user message to database immediately
+        await saveMessageToDatabase(userMessage, userId: userId)
 
         isLoading = true
         errorMessage = nil
 
         do {
             let history = getContextHistory(from: userMessage.id)
-            let response = try await ClaudeService.shared.sendMessage(text, conversationHistory: history)
+            let (responseText, projects) = try await ClaudeService.shared.sendMessage(text, conversationHistory: history)
 
-            // Parse response for project tags
-            let (cleanedResponse, projects) = parseProjectTags(from: response)
+            // Parse response for project tags (legacy support)
+            let (cleanedResponse, additionalProjects) = parseProjectTags(from: responseText)
+            
+            // Combine projects from JSON response and parsed tags
+            let allProjects = projects + additionalProjects
 
             let assistantMessage = Message(
                 content: cleanedResponse,
                 isUser: false,
-                projectCards: projects.isEmpty ? nil : projects,
+                projectCards: allProjects.isEmpty ? nil : allProjects,
                 parentId: userMessage.id
             )
             messages.append(assistantMessage)
             activeMessageId = assistantMessage.id
+            
+            // Save assistant message to database
+            await saveMessageToDatabase(assistantMessage, userId: userId)
 
         } catch {
             errorMessage = error.localizedDescription
@@ -91,6 +128,9 @@ class ChatViewModel: ObservableObject {
             )
             messages.append(errorMsg)
             activeMessageId = errorMsg.id
+            
+            // Save error message to database
+            await saveMessageToDatabase(errorMsg, userId: userId)
         }
 
         isLoading = false
@@ -150,5 +190,82 @@ class ChatViewModel: ObservableObject {
     func clearMessages() {
         messages = []
         errorMessage = nil
+        activeMessageId = nil
+    }
+    
+    // MARK: - Database Operations
+    
+    private func loadMessagesFromDatabase() async {
+        guard let userId = authService.getSupabaseUserId() ?? authService.getCurrentIdentifier() else {
+            return
+        }
+        
+        isSyncing = true
+        
+        do {
+            // Try to load from Supabase first
+            let supabaseMessages = try await supabaseService.loadMessages(userId: userId)
+            
+            if !supabaseMessages.isEmpty {
+                messages = supabaseMessages
+                if let lastMessage = messages.last {
+                    activeMessageId = lastMessage.id
+                }
+            } else {
+                // Fallback to CloudKit if Supabase is empty
+                #if os(iOS) || os(macOS) || os(watchOS)
+                let cloudKitMessages = try await cloudKitService.loadMessages(userId: userId)
+                if !cloudKitMessages.isEmpty {
+                    messages = cloudKitMessages
+                    if let lastMessage = messages.last {
+                        activeMessageId = lastMessage.id
+                    }
+                }
+                #endif
+            }
+        } catch {
+            print("⚠️ Error loading messages from database: \(error.localizedDescription)")
+            // Try CloudKit as fallback
+            #if os(iOS) || os(macOS) || os(watchOS)
+            do {
+                let cloudKitMessages = try await cloudKitService.loadMessages(userId: userId)
+                if !cloudKitMessages.isEmpty {
+                    messages = cloudKitMessages
+                    if let lastMessage = messages.last {
+                        activeMessageId = lastMessage.id
+                    }
+                }
+            } catch {
+                print("⚠️ Error loading messages from CloudKit: \(error.localizedDescription)")
+            }
+            #endif
+        }
+        
+        isSyncing = false
+    }
+    
+    private func saveMessageToDatabase(_ message: Message, userId: String) async {
+        // Save to Supabase (primary)
+        do {
+            try await supabaseService.saveMessage(message, userId: userId, conversationId: conversationId)
+        } catch {
+            // Only log as error if it's not a configuration/SDK issue
+            if case SupabaseError.configurationMissing = error {
+                print("ℹ️ Supabase SDK not yet integrated - message saved locally only")
+            } else {
+                print("⚠️ Error saving message to Supabase: \(error.localizedDescription)")
+            }
+        }
+        
+        // Also save to CloudKit for offline access (secondary)
+        #if os(iOS) || os(macOS) || os(watchOS)
+        do {
+            try await cloudKitService.saveMessage(message, userId: userId, conversationId: cloudKitConversationId)
+        } catch {
+            // CloudKit errors are often due to iCloud not being signed in or container not configured
+            // Log as info rather than error to avoid alarming users
+            print("ℹ️ CloudKit save skipped: \(error.localizedDescription)")
+        }
+        #endif
     }
 }
